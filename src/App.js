@@ -9,21 +9,18 @@ const App = () => {
     <div className="App">
       <Router>
         <Header />
-
         <Container style={{ marginTop: '20px' }}>
-          <Row style={{ alignItems: 'flex-start' }}>
-            <Switch>
-              <Route exact path="/">
-                <MoviesPage />
-              </Route>
-              <Route path="/comics/:id">
-                <DetailsPage />
-              </Route>
-              <Route path="/stories">
-                <h1>Stories</h1>
-              </Route>
-            </Switch>
-          </Row>
+          <Switch>
+            <Route exact path="/">
+              <MoviesPage />
+            </Route>
+            <Route path="/comics/:id">
+              <DetailsPage />
+            </Route>
+            <Route path="/stories">
+              <h1>Stories</h1>
+            </Route>
+          </Switch>
         </Container>
       </Router>
     </div>
