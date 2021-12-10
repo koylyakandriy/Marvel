@@ -6,7 +6,7 @@
 - create multi request 
 - pip-script coverage
 - link to move or comics :id
-- loader componen
+- loader component
 - size of card
 - default title, description, image 
 - reusable axios hook (or something like that)
