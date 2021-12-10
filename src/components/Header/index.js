@@ -12,10 +12,10 @@ const Header = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="m-auto">
           <Nav.Link as={NavLink} to="/">
-            Movies
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/comics">
             Comics
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/stories">
+            Stories
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
