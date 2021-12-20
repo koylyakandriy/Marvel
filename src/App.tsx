@@ -1,10 +1,11 @@
-import Header from './components/Header'
+import { FC } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import MoviesPage from './modules/ComicsPage'
 import { Container, Row } from 'react-bootstrap'
+import Header from './components/Header'
+import MoviesPage from './modules/ComicsPage'
 import DetailsPage from './modules/DetailsPage'
 
-const App = () => {
+const App: FC = () => {
   return (
     <div className="App">
       <Router>

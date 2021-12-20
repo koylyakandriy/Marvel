@@ -16,7 +16,7 @@ const DetailsPage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {!isLoading && response && <Detail data={response} />}
+      {!isLoading && response && <Detail item={response?.results[0]} />}
     </>
   )
 }
