@@ -22,7 +22,7 @@ export interface IComics {
 }
 
 const ComicsPage: VFC = () => {
-  const apiUrl: string = "comics";
+  const apiUrl = "comics";
   const [{ response, isLoading }, doFetch] = useFetch(apiUrl);
 
   useEffect(() => {
