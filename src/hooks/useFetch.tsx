@@ -1,27 +1,28 @@
-import axios, { AxiosResponse } from 'axios'
-import CryptoJS from 'crypto-js'
-import { useCallback, useEffect, useState } from 'react'
+import axios, { AxiosResponse } from "axios";
+import CryptoJS from "crypto-js";
+import { useCallback, useEffect, useState } from "react";
+import { ItemProps } from "../modules/ComicsPage";
 
-const PUBLIC_KEY: string = `${process.env.REACT_APP_MARVEL_PUBLIC_KEY}`
-const PRIVATE_KEY: string = `${process.env.REACT_APP_MARVEL_PRIVATE_KEY}`
+const PUBLIC_KEY = `${process.env.REACT_APP_MARVEL_PUBLIC_KEY}`;
+const PRIVATE_KEY = `${process.env.REACT_APP_MARVEL_PRIVATE_KEY}`;
 
-const ts: number = new Date().getTime()
-const hash: string = CryptoJS.MD5(ts + PRIVATE_KEY + PUBLIC_KEY).toString()
+const ts = new Date().getTime();
+const hash = CryptoJS.MD5(ts + PRIVATE_KEY + PUBLIC_KEY).toString();
 
 export default (url: string) => {
-  const baseURL: string = 'https://gateway.marvel.com/v1/public/'
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [response, setResponse] = useState(null)
-  const [error, setError] = useState(null)
-  const [options, setOptions] = useState({})
+  const baseURL = "https://gateway.marvel.com/v1/public/";
+  const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState<ItemProps[]>([]);
+  const [error, setError] = useState(null);
+  const [options, setOptions] = useState({});
 
   const doFetch = useCallback((options = {}) => {
-    setOptions(options)
-    setIsLoading(true)
-  }, [])
+    setOptions(options);
+    setIsLoading(true);
+  }, []);
 
   useEffect(() => {
-    let skipGetResponseAfterDestroy: boolean = false
+    let skipGetResponseAfterDestroy = false;
 
     const requestOptions = {
       ...options,
@@ -32,27 +33,28 @@ export default (url: string) => {
           hash: hash,
         },
       },
-    }
+    };
 
-    if (!isLoading) return
+    if (!isLoading) return;
     axios(baseURL + url, requestOptions)
       .then(({ data }: AxiosResponse) => {
         if (!skipGetResponseAfterDestroy) {
-          setResponse(data.data)
-          setIsLoading(false)
+          //
+          setResponse(data.data);
+          setIsLoading(false);
         }
       })
       .catch((error) => {
         if (!skipGetResponseAfterDestroy) {
-          setError(error.response.data)
-          setIsLoading(false)
+          setError(error.response.data);
+          setIsLoading(false);
         }
-      })
+      });
 
     return () => {
-      skipGetResponseAfterDestroy = true
-    }
-  }, [isLoading, options, url])
+      skipGetResponseAfterDestroy = true;
+    };
+  }, [isLoading, options, url]);
 
-  return [{ isLoading, response, error }, doFetch]
-}
+  return [{ isLoading, response, error }, doFetch];
+};

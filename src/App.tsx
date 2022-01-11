@@ -1,21 +1,21 @@
-import { FC } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Container, Row } from 'react-bootstrap'
-import Header from './components/Header'
-import MoviesPage from './modules/ComicsPage'
-import DetailsPage from './modules/DetailsPage'
+import { VFC } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
+import Header from "./components/Header";
+import ComicsPage from "./modules/ComicsPage";
+import DetailsPage from "./modules/DetailsPage";
 
-const App: FC = () => {
+const App: VFC = () => {
   return (
     <div className="App">
       <Router>
         <Header />
 
-        <Container style={{ marginTop: '20px' }}>
-          <Row style={{ alignItems: 'flex-start' }}>
+        <Container style={{ marginTop: "20px" }}>
+          <Row style={{ alignItems: "flex-start" }}>
             <Switch>
               <Route exact path="/">
-                <MoviesPage />
+                <ComicsPage />
               </Route>
               <Route path="/comics/:id">
                 <DetailsPage />
@@ -28,7 +28,7 @@ const App: FC = () => {
         </Container>
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

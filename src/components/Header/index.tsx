@@ -1,8 +1,8 @@
-import React from 'react'
-import { Nav, Navbar } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { VFC } from "react";
+import { Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header: VFC = () => {
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Navbar.Brand as={NavLink} to="/">
@@ -20,7 +20,7 @@ const Header = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

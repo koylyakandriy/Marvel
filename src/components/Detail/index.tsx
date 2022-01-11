@@ -1,23 +1,9 @@
-import { FC } from 'react'
-import { Col, Image, Row } from 'react-bootstrap'
+import { FC } from "react";
+import { Col, Image, Row } from "react-bootstrap";
+import { IComics } from "../../modules/ComicsPage";
 
-type ImageProp = {
-  path: string,
-  extension: string,
-}
-
-type ItemProps = {
-  item: {
-    title: string,
-    prices: [{ price: string }],
-    description: string,
-    images: [ImageProp],
-    thumbnail: ImageProp,
-  },
-}
-
-const Detail: FC<ItemProps> = ({ item }: ItemProps) => {
-  const { title, prices, description, images, thumbnail } = item
+const Detail: FC<IComics> = ({ item }) => {
+  const { title, prices, description, images, thumbnail } = item;
   return (
     <Col>
       <Row>
@@ -36,7 +22,7 @@ const Detail: FC<ItemProps> = ({ item }: ItemProps) => {
         </Col>
       </Row>
     </Col>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;
